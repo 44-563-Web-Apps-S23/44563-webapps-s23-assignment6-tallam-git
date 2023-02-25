@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web-Apps Lab 6</title>
+</head>
+<body>
+    <h1>Painter entry Charan Teja</h1>
+    <form>
+        <label for="form_painter"> The hidden painter name </label>
+        <input type="password" id="password" name="form_painter" min=10 max=50 step=2 value="Monet">
+        <br>
+        <br>
+        <label for="form_check">Guess the painter</label>
+        <input type="text" id="inputCheck" name="form_check" min=10 max=50 step=2> 
+        <br>
+        <br>
+        <input type="button" onclick="checkPainter()" value="Check the guess">
+    </form>
+    <h3><p id="result">Output will be displayed here</p></h3>
+    <script>
+        var good = 0
+        var oops = 0
+        function checkPainter() {
+            console.log("Getting form values")
+            pd = document.getElementById("password").value
+            check = document.getElementById("inputCheck").value
+                        
+            if (pd == check) {
+                alert("You got it right")
+                good = good + 1
+            } else {
+                oops = oops + 1
+                alert('Sorry')
+            }
+            output = document.getElementById("result")
+            
+            output.innerHTML = "Good count: " + good + "   Oops count: " + oops
+        }
+    </script>
+</body>
+</html>
