@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Web-Apps Lab 6</title>
+    <title>Painter Page</title>
 </head>
 <body>
     <h1>Painter entry Charan Teja</h1>
@@ -11,12 +11,15 @@
         <br>
         <br>
         <label for="form_check">Guess the painter</label>
-        <input type="text" id="inputCheck" name="form_check" min=10 max=50 step=2> 
+        <input type="text" id="inputCheck" name="form_check" min=10 max=50 step=2>
         <br>
         <br>
         <input type="button" onclick="checkPainter()" value="Check the guess">
     </form>
-    <h3><p id="result">Output will be displayed here</p></h3>
+    <h3>
+        <p id="result">Output will be displayed here</p>
+    </h3>
+    <br>
     <script>
         var good = 0
         var oops = 0
@@ -24,18 +27,53 @@
             console.log("Getting form values")
             pd = document.getElementById("password").value
             check = document.getElementById("inputCheck").value
-                        
+
             if (pd == check) {
                 alert("You got it right")
                 good = good + 1
-            } else {
+            }
+            else if (oops >= 10) {
+                document.getElementById("btn").onclick = giveAlert();
+                out.innerHTML = "Correct guess: " + good + " Wrong guess: " + oops;
+            }
+            else {
                 oops = oops + 1
                 alert('Sorry')
             }
             output = document.getElementById("result")
-            
-            output.innerHTML = "Good count: " + good + "   Oops count: " + oops
+            output.innerHTML = "Good count: " + good + "<br> Oops count: " + oops
+        }
+    </script>
+
+    <div>
+        <img id="image" src="maclura.jpg" height="100px" width="100px" onclick="selectImage()">
+    </div>
+    <script>
+        useImage = 1
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    document.getElementById("image").src = "taxus.jpg"
+                    useImage++
+                    break;
+                case 2:
+                    document.getElementById("image").src = "lamium.jpg"
+                    useImage++
+                    break;
+                case 3:
+                    document.getElementById("image").src = "maclura.jpg"
+                    useImage = 1
+                    break;
+                default:
+                    imgbox.src = "lamium.jpg"
+                    useImage++
+                    break;
+            }
+        }
+        function giveAlert() {
+            alert("Sorry, ran out of guesses.");
         }
     </script>
 </body>
+
 </html>
