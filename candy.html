@@ -1,82 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Candy Page</title>
-    </head>
+
+<head>
+    <title>Candy Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+</head>
+
 <body>
 
-<h1>Charan Teja chooses candy</h1>
-<form> 
-    <input type="checkbox" id="dark" name="candy" value="true">
-    <label for="dark">Dark Chocolate</label> <br>
-    <input type="checkbox" id="nuts" name="vacation" value="true">
-    <label for="Nuts">Nuts</label> <br>
-    <input type="checkbox" id="chewy" name="vacation" value="false">
-    <label for="chewy">Chewy</label> <br>
-    <input type="button" value="Select a box" onclick="selectBox()">
-</form>
-<p id="result">This text will be replaced </p>
-<br>
-<form>
-    <label for="property">Enter the size</label>
-    <input type="text" id="property" name="property" value="size"> <br>
-    
-    <label for="price">Enter price</label>
-    <input type="text" id="price" name="price"> <br>
+    <h1>Charan Teja chooses candy</h1>
+    <form>
+        <input type="checkbox" id="dark" name="candy" value="true">
+        <label for="dark">Dark Chocolate</label> <br>
+        <input type="checkbox" id="nuts" name="vacation" value="true">
+        <label for="Nuts">Nuts</label> <br>
+        <input type="checkbox" id="chewy" name="vacation" value="false">
+        <label for="chewy">Chewy</label> <br>
+        <input type="button" class="btn btn-primary" value="Select a box" onclick="selectBox()">
+    </form>
+    <p id="result">This text will be replaced </p>
+    <br>
+    <form>
+        <label for="property">Enter the size</label>
+        <input type="text" id="property" name="property" value="size"> <br>
 
-    <input type="button" value="Update the box" onclick="updateBox()">
-</form>
+        <label for="price">Enter price</label>
+        <input type="text" id="price" name="price"> <br>
 
-<script> 
-let my_candy_box={};
-function selectBox()
-    {
-        my_candy_box={};
-        let dark=document.getElementById("dark").checked
-        let nuts=document.getElementById("nuts").checked
-        let chewy=document.getElementById("chewy").checked
-        if(dark)
-        {
-            my_candy_box.dark = true;
+        <input type="button" class="btn btn-success" value="Update the box" onclick="updateBox()">
+    </form>
+
+    <script>
+        let my_candy_box = {};
+        function selectBox() {
+            my_candy_box = {};
+            let dark = document.getElementById("dark").checked
+            let nuts = document.getElementById("nuts").checked
+            let chewy = document.getElementById("chewy").checked
+            if (dark) {
+                my_candy_box.dark = true;
+            }
+            else {
+                my_candy_box.dark = false;
+            }
+            if (nuts) {
+                my_candy_box.nuts = true;
+            }
+            else {
+                my_candy_box.nuts = false;
+            }
+            if (chewy) {
+                my_candy_box.chewy = true;
+            }
+            else {
+                my_candy_box.chewy = false;
+            }
+            document.getElementById("result").innerHTML = JSON.stringify(my_candy_box)
         }
-        else
-        {
-            my_candy_box.dark = false;
+
+
+
+        function updateBox() {
+            let property = document.getElementById("property").value;
+
+            let price = document.getElementById("price").value;
+
+            my_candy_box["property"] = property;
+
+            my_candy_box["price"] = price;
+
+            document.getElementById("result").innerHTML = JSON.stringify(my_candy_box)
         }
-        if(nuts)
-        {
-            my_candy_box.nuts = true;
-        }
-        else
-        {
-            my_candy_box.nuts = false;
-        }
-        if(chewy)
-        {
-            my_candy_box.chewy = true;
-        }
-        else
-        {
-            my_candy_box.chewy = false;
-        }
-        document.getElementById("result").innerHTML=JSON.stringify(my_candy_box)
-    } 
-
-
-    
-    function updateBox()
-    {
-        let property=document.getElementById("property").value;
-
-        let price=document.getElementById("price").value;
-
-        my_candy_box["property"]=property;
-
-        my_candy_box["price"]=price;
-
-        document.getElementById("result").innerHTML=JSON.stringify(my_candy_box)
-    }
-</script>
+    </script>
 
 </body>
+
 </html>
